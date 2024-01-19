@@ -1,55 +1,76 @@
-# ecommerce app
+# Web Services
 
-## pre-requisites
+## requirements
 
-- mysql
-  - http://172.18.4.5:9090/mysql.dmg
-  - encryption: legacy (mysql_native_password)
-  - password: test1234
-  - configuration
-    - check your current shell
-      - echo $SHELL
-    - open .zshrc
-      - vim ~/.zshrc
-      - keys:
-        - shift + G -> go to the last line of the document
-        - esc + o -> add a new line
-    - add the mysql path to the system path
-      - export PATH=$PATH:/usr/local/mysql/bin
-      - keys:
-        - esc + :wq -> write (save) and quit
-    - read the latest changes from zshrc
-      - source ~/.zshrc
-- nodejs
-  - http://172.18.4.5:9090/nodejs.pkg
-
-## requirements (SRS -> software requirement specification)
-
-- seller (react)
-
-  - registration (send an email notification)
-  - login
-  - create product
-  - edit product
-  - search / list product
-  - orders
-
-- buyer (mobile)
-  - registration (send an email notification)
-  - login
+- seller
+  - register a new seller
+    - POST /seller/register: done
+  - login a seller
+    - POST /seller/login: done
+- product
+  - add a new product
+    - POST /product/ : done
+  - search products
+    - GET /product/ :done
+    - url parameters: sort-by
+  - update a product
+    - PUT /product/:id: done
+  - update only price
+    - PATCH /product/:id/
+  - delete existing product
+    - DELETE /product/:id: done
+  - review a product
+    - POST /product/review
+  - get all reviews
+    - GET /product/review/:id
+- customer
+  - register a new customer
+    - POST /customer/register: done
+  - login a customer
+    - POST /customer/login: done
   - forgot password
-  - product
-    - list or search products (in sorted order)
-    - add review to a product
-  - cart
-    - add or update a product to cart
-    - remove a product from cart
-    - place an order
-  - order
-    - list the orders
-    - update the order
-    - cancel the order
-  - profile
-    - get profile
-    - update profile
-    - change password
+    - POST /customer/forgot-password
+  - reset password
+    - POST /customer/reset-password
+  - get customer profile
+    - GET /customer/profile/ :done
+  - update profile
+    - PUT /customer/profile :done
+  - close account
+    - DELETE /customer :done
+- cart
+  - add a product to cart
+    - POST /cart/ : done
+  - get all the cart items
+    - GET /cart : done
+  - update cart
+    - PUT /cart/:id : done
+  - delete an item from cart
+    - DELETE /cart/:id : done
+- order
+  - place an order
+    - POST /order/place-order : done
+  - change status of an order
+    - PATCH /order/:id
+  - get orders
+    - GET /order : done
+
+## packages
+
+- mysql2: database
+- express: web server
+- cors: cors configuration
+- jsonwebtoken: jwt implementation
+- multer: uploading a file
+- crypto-js: password encryption
+- morgan: logging
+
+```bash
+
+# install yarn and nodemon globally
+> sudo npm install -g yarn nodemon
+
+# install required packages
+> yarn add mysql2 express cors jsonwebtoken crypto-js morgan multer
+
+```
