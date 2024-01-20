@@ -6,11 +6,13 @@ const db = require('../db')
 router.get('/', (request, response) => {
   const statement = `
         select 
-            id, productId, quantity, mrp, price, total
+            c.id, c.productId, c.quantity, c.mrp, c.price, c.total,
+            p.title, p.category, p.company, p.image
         from 
-            cart
+            cart c, product p
         where
-            buyerId = ?
+            (c.productId = p.id) AND
+            (buyerId = ?)
     `
   db.execute(statement, [request.user.id], (error, items) => {
     response.send(utils.createResponse(error, items))

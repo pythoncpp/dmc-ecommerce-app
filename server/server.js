@@ -11,6 +11,7 @@ app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use(morgan('combined'))
+app.use(express.static('images'))
 
 // return version for consumer
 app.get('/version', (request, response) => {
