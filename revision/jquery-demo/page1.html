@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      div#div3 {
+        width: 100px;
+        height: 100px;
+        background-color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>document 1</h1>
+    <div id="div1">div1</div>
+    <div id="div2">div2</div>
+    <div id="div3"></div>
+
+    <button onclick="onButtonClick()" id="button1">button1</button>
+
+    <script>
+      function onButtonClick() {
+        const div1 = document.getElementById('div1')
+        div1.innerHTML = 'this is a message sent by button click even'
+        div1.style.fontSize = '30px'
+        div1.style.color = 'red'
+
+        document.getElementById('div2').innerHTML =
+          'changed message by button click'
+
+        const div3 = document.getElementById('div3')
+        div3.style.width = '150px'
+        div3.style.height = '150px'
+        setTimeout(() => {
+          div3.style.width = '100px'
+          div3.style.height = '100px'
+        }, 500)
+      }
+    </script>
+  </body>
+</html>

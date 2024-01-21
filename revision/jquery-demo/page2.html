@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      div#div3 {
+        width: 100px;
+        height: 100px;
+        background-color: red;
+      }
+    </style>
+    <script src="jquery.js"></script>
+  </head>
+  <body>
+    <h1>document 1</h1>
+    <div id="div1">div1</div>
+    <div class="div2">div2</div>
+    <div id="div3"></div>
+
+    <button onclick="onButtonClick()" id="button1">button1</button>
+
+    <script>
+      function onButtonClick() {
+        // get the reference of div1
+        // const div1 = document.getElementById('div1')
+        // const div1 = $('#div1')
+        // div1.html('this is changed by button click')
+        $('#div1').html('this is changed by button click')
+        // $('#div3').fadeToggle(1000)
+        // $('#div3').slideToggle(1000)
+        $('#div3')
+          .animate({ width: '150px', height: '150px' }, 1000)
+          .animate({ width: '100px', height: '100px' }, 1000)
+      }
+    </script>
+  </body>
+</html>

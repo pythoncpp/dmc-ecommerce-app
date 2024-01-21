@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="jquery.js"></script>
+  </head>
+  <body>
+    <button onclick="loadData()">get data</button>
+    <script>
+      function loadData() {
+        $.ajax({
+          url: 'https://dummy.restapiexample.com/api/v1/employees',
+          method: 'GET',
+          success: (result) => {
+            console.log(result)
+          },
+          error: (error) => {
+            console.log(error)
+          },
+        })
+      }
+    </script>
+  </body>
+</html>
